@@ -44,5 +44,37 @@ class MainController extends Controller
     {
         return Works::all();
     }
-
+    public function addWorkNew(Request $request)
+    {
+        // return $request->input('user_name');
+        $work = new Works();
+        $work->work_do_time = $request->input('work_do_time');
+        $work->work_name = $request->input('work_name');
+        $work->created_at = date("Y-m-d");
+        $work->work_description = $request->input('work_description');
+        $work->work_time_point = $request->input('work_time_point');
+        $work->work_status = $request->input('work_status');
+        $work->work_type = $request->input('work_type');
+        $work->work_category = $request->input('work_category');
+        $work->save();
+        return response()->json(['message' => 'success', 'status' => 200 ,'user' => $work ]);
+    }
+    // public function workSearchIdUpdate(Request $request)
+    // {
+    //     $work = Works::where('work_id', $request->input('work_id'))->get();
+    //     foreach($work as $item){
+    //         $item->work_status = 'done';
+    //         $item->save();
+    //     }
+    //     return response()->json(['message' => 'success', 'status' => 200 ,'user' => $work ]);
+    // }
+    public function workSearchIdUpdate(Request $request)
+    {
+        $work = Works::where('work_id', $request->input('work_id'))->get();
+        foreach($work as $item){
+            $item->work_status = 'done';
+            $item->save();
+        }
+        return response()->json(['message' => 'success', 'status' => 200 ,'user' => $work ]);
+    }
 }

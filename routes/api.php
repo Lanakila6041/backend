@@ -33,3 +33,4 @@ Route::get('getAllUser', 'MainController@getAllUser');
 Route::post('loginUser', 'MainController@loginUser');
 Route::post('addUser', 'MainController@addUser');
 Route::get('getAllWorks', 'MainController@getAllWorks');
+Route::post('workSearchIdUpdate', 'MainController@workSearchIdUpdate');
